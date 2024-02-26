@@ -180,7 +180,15 @@ const PageThree: React.FC = () => {
             className="mt-1 block w-full text-sm text-white border border-transparent rounded-md file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-slate-600 file:hover:bg-slate-700 file:text-white"
           />
         </div>
-
+        {bannerImage && (
+          <div className="mt-4">
+            <img
+              src={URL.createObjectURL(bannerImage)}
+              alt="Banner preview"
+              className="max-w-xs"
+            />
+          </div>
+        )}
         <button
           type="submit"
           className="mt-4 px-4 py-2 bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:ring-indigo-500 focus:ring-offset-2 text-white transition ease-in duration-200 text-center text-sm font-semibold shadow-md rounded-lg w-full"
