@@ -3,6 +3,7 @@ import Card from "../components/Card";
 import iphoneImg from "../assets/iphone-img.jpg";
 import { Link } from "react-router-dom";
 import { FaArrowRightLong } from "react-icons/fa6";
+import Accordion from "../components/Accordian";
 
 const PageOne: React.FC = () => {
   const [companyName, setCompanyName] = useState("");
@@ -10,6 +11,7 @@ const PageOne: React.FC = () => {
   const [selectedCards, setSelectedCards] = useState<{
     [key: number]: boolean;
   }>({});
+  const [isAccordionOpen, setIsAccordionOpen] = useState(false); // State to control accordion visibility
 
   const cardsData = [
     { imgSrc: iphoneImg, price: "100", description: "Product 1" },
@@ -26,6 +28,7 @@ const PageOne: React.FC = () => {
 
   const handleScanUrl = () => {
     console.log("Scanning URL:", companyUrl);
+    setIsAccordionOpen(true); // Open the accordion on click
     // Implementation for scanning URL, such as a backend call to validate the URL
   };
 
@@ -37,7 +40,7 @@ const PageOne: React.FC = () => {
     <div className="flex flex-col min-h-screen bg-slate-300">
       <div className="absolute top-0 right-0 m-4 text-lg font-semibold flex items-center justify-center gap-2">
         <span>Page 1/3</span>
-        <FaArrowRightLong className="text-4xl text-slate-700" />
+        <FaArrowRightLong className="text-2xl text-slate-700" />
       </div>
       <h1 className="font-semibold mx-auto mt-6 text-[45px]">
         Welcome to Campaign Marketing
@@ -89,18 +92,22 @@ const PageOne: React.FC = () => {
               Scan URL
             </button>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {cardsData.map((card, index) => (
-              <Card
-                key={index}
-                imgSrc={card.imgSrc}
-                price={card.price}
-                description={card.description}
-                isSelected={!!selectedCards[index]}
-                onToggle={() => toggleSelectCard(index)}
-              />
-            ))}
-          </div>
+          {isAccordionOpen && (
+            <Accordion title="Listed Products">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {cardsData.map((card, index) => (
+                  <Card
+                    key={index}
+                    imgSrc={card.imgSrc}
+                    price={card.price}
+                    description={card.description}
+                    isSelected={!!selectedCards[index]}
+                    onToggle={() => toggleSelectCard(index)}
+                  />
+                ))}
+              </div>
+            </Accordion>
+          )}
           <Link to="/page2">
             <button
               className="mt-4 px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"

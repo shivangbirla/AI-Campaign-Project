@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
-import AlertDialog from "../components/AlertDialog";
 
 type CampaignType = "Type 1" | "Type 2" | "Type 3";
 type CampaignStyle = "Style 1" | "Style 2" | "Style 3";
 
-const PageThree: React.FC = () => {
+const PageFour: React.FC = () => {
   const [campaignTimeline, setCampaignTimeline] = useState("");
   const [campaignType, setCampaignType] = useState<CampaignType>("Type 1");
   const [campaignStyle, setCampaignStyle] = useState<CampaignStyle>("Style 1");
@@ -17,12 +16,18 @@ const PageThree: React.FC = () => {
   const handleQuantityChange = (operation: "add" | "subtract") => {
     setQuantity((prev) =>
       operation === "add" ? prev + 50 : Math.max(prev - 50, 0)
-    ); // Prevent negative quantity
+    );
   };
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files ? event.target.files[0] : null;
     setBannerImage(file);
+  };
+
+  const handleCustomOfferSelection = () => {
+    // Open a dialog to confirm the custom offer
+    const selection = window.confirm("Would you like to add a custom offer?");
+    setCustomOffer(selection ? "yes" : "no");
   };
 
   return (
@@ -147,38 +152,25 @@ const PageThree: React.FC = () => {
             </button>
           </div>
         </div>
-
-        <div className="flex flex-row items-center gap-3">
+        <div>
           <label className="block text-sm font-medium text-gray-700">
             Any Custom Offer?
           </label>
-          {/* <div className="mt-2">
-            <label className="inline-flex items-center mr-6">
-              <input
-                type="radio"
-                name="customOffer"
-                value="yes"
-                checked={customOffer === "yes"}
-                onChange={() => setCustomOffer("yes")}
-                className="text-indigo-600 focus:ring-indigo-500"
-              />
-              <span className="ml-2">Yes</span>
-            </label>
-            <label className="inline-flex items-center">
-              <input
-                type="radio"
-                name="customOffer"
-                value="no"
-                checked={customOffer === "no"}
-                onChange={() => setCustomOffer("no")}
-                className="text-indigo-600 focus:ring-indigo-500"
-              />
-              <span className="ml-2">No</span>
-            </label>
-          </div> */}
-          <AlertDialog />
+          <div className="mt-2 flex items-center">
+            <button
+              type="button"
+              onClick={handleCustomOfferSelection}
+              className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded"
+            >
+              Select Custom Offer
+            </button>
+            <span className="ml-4">
+              Selected: {customOffer === "yes" ? "Yes" : "No"}
+            </span>
+          </div>
         </div>
 
+        {/* Remaining form fields and submit button */}
         <div>
           <label
             htmlFor="campaign-banner"
@@ -190,7 +182,7 @@ const PageThree: React.FC = () => {
             type="file"
             id="campaign-banner"
             onChange={handleImageChange}
-            className="mt-1 block w-full text-sm text-white border border-transparent rounded-md file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-slate-600 file:hover:bg-slate-700 file:text-white"
+            className="mt-1 block w-full text-sm text-gray-900 rounded-lg border border-gray-300 cursor-pointer focus:outline-none"
           />
         </div>
         {bannerImage && (
@@ -204,7 +196,7 @@ const PageThree: React.FC = () => {
         )}
         <button
           type="submit"
-          className="mt-4 px-4 py-2 bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:ring-indigo-500 focus:ring-offset-2 text-white transition ease-in duration-200 text-center text-sm font-semibold shadow-md rounded-lg w-full"
+          className="mt-4 px-4 py-2 bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:ring-blue-500 focus:ring-offset-2 text-white transition ease-in duration-200 text-center text-sm font-semibold shadow-md rounded-lg w-full"
         >
           Submit
         </button>
@@ -213,4 +205,4 @@ const PageThree: React.FC = () => {
   );
 };
 
-export default PageThree;
+export default PageFour;
