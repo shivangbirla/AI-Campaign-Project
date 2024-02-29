@@ -16,7 +16,7 @@ const Accordion: React.FC<AccordionProps> = ({ title, children }) => {
   return (
     <div className="accordion bg-white shadow-md rounded-md overflow-hidden">
       <button
-        className="accordion-title bg-slate-500 text-white p-4 w-full flex justify-between items-center hover:bg-slate-600 focus:outline-none focus:ring focus:ring-slate-300 transition duration-150 ease-in-out"
+        className="accordion-title bg-blue-600 text-white p-4 w-full flex justify-between items-center hover:bg-blue-700 focus:outline-none focus:ring focus:ring-slate-300 transition duration-150 ease-in-out"
         onClick={toggleAccordion}
       >
         <h3 className="text-lg font-medium">{title}</h3>

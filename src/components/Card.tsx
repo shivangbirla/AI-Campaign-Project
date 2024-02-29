@@ -29,7 +29,7 @@ const Card: React.FC<CardProps> = ({
       alt="Product"
     />
     <div className="p-4">
-      <h5 className="text-lg font-bold">{`$${price}`}</h5>
+      <h5 className="text-lg font-bold">{`${price}`}</h5>
       <p className="text-gray-700">{description}</p>
     </div>
   </div>

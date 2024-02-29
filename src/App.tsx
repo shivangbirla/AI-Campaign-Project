@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import PageOne from "./pages/PageOne";
 import PageTwo from "./pages/PageTwo";
-// import PageFour from "./pages/PageFour";
 import PageThree from "./pages/PageThree";
 
 const App = () => {

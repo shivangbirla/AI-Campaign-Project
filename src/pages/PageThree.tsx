@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import AlertDialog from "../components/AlertDialog";
+import Banner from "../components/Banner";
 
 type CampaignType = "Type 1" | "Type 2" | "Type 3";
 type CampaignStyle = "Style 1" | "Style 2" | "Style 3";
@@ -26,26 +27,44 @@ const PageThree: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 space-y-4 bg-slate-300 min-h-screen">
-      <div className="absolute top-0 right-0 m-4 text-lg font-semibold flex items-center justify-center gap-2">
+    <div className="flex flex-col items-center justify-center p-6 space-y-4 bg-[#FCFCFB] min-h-screen">
+      {/* <div className="absolute top-0 right-0 m-4 text-lg font-semibold flex items-center justify-center gap-2">
         <span>Page 3/3</span>
         <FaArrowRightLong className="text-2xl text-slate-700" />
-      </div>
-      <form className="w-full max-w-2xl space-y-6 bg-white border border-black p-8 rounded-lg shadow-lg">
-        <div>
-          <label
-            htmlFor="campaign-timeline"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Campaign Timelines
-          </label>
-          <input
-            type="date"
-            id="campaign-timeline"
-            value={campaignTimeline}
-            onChange={(e) => setCampaignTimeline(e.target.value)}
-            className="mt-1 block w-full border border-transparent rounded-md shadow-sm py-2 px-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-          />
+      </div> */}
+      <form className="w-full max-w-3xl space-y-6 bg-white p-8 rounded-lg shadow-2xl">
+        <Banner />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="campaign-timeline"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Campaign Timelines
+            </label>
+            <input
+              type="date"
+              id="campaign-timeline"
+              value={campaignTimeline}
+              onChange={(e) => setCampaignTimeline(e.target.value)}
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="campaign-timeline"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Quantity
+            </label>
+            <input
+              id="campaign-timeline"
+              value={campaignTimeline}
+              onChange={(e) => setCampaignTimeline(e.target.value)}
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              placeholder="Enter Quantity"
+            />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -60,7 +79,7 @@ const PageThree: React.FC = () => {
               id="campaign-type"
               value={campaignType}
               onChange={(e) => setCampaignType(e.target.value as CampaignType)}
-              className="mt-1 block w-full border border-transparent rounded-md shadow-sm py-2 px-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             >
               <option>Email Campaign</option>
               <option>Social Media Campaign</option>
@@ -87,7 +106,7 @@ const PageThree: React.FC = () => {
               onChange={(e) =>
                 setCampaignStyle(e.target.value as CampaignStyle)
               }
-              className="mt-1 block w-full border border-transparent rounded-md shadow-sm py-2 px-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             >
               <option>Newsletter</option>
               <option>Promotional Offers</option>
@@ -112,12 +131,12 @@ const PageThree: React.FC = () => {
             id="campaign-goal"
             value={campaignGoal}
             onChange={(e) => setCampaignGoal(e.target.value)}
-            className="mt-1 block w-full border border-transparent rounded-md shadow-sm py-2 px-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             rows={4}
           ></textarea>
         </div>
 
-        <div>
+        {/* <div>
           <label
             htmlFor="quantity"
             className="block text-sm font-medium text-gray-700"
@@ -135,7 +154,7 @@ const PageThree: React.FC = () => {
             <input
               type="text"
               readOnly
-              value={`${quantity} units`}
+              value={`${quantity}`}
               className="mx-4 border border-transparent rounded-md shadow-sm py-2 px-3 text-center focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             />
             <button
@@ -146,13 +165,13 @@ const PageThree: React.FC = () => {
               +
             </button>
           </div>
-        </div>
+        </div> */}
 
-        <div className="flex flex-row items-center gap-3">
+        <div className="flex flex-col">
           <label className="block text-sm font-medium text-gray-700">
             Any Custom Offer?
           </label>
-          {/* <div className="mt-2">
+          <div className="mt-2">
             <label className="inline-flex items-center mr-6">
               <input
                 type="radio"
@@ -175,22 +194,22 @@ const PageThree: React.FC = () => {
               />
               <span className="ml-2">No</span>
             </label>
-          </div> */}
-          <AlertDialog />
+          </div>
+          {/* <AlertDialog /> */}
         </div>
 
         <div>
           <label
             htmlFor="campaign-banner"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-700 mb-2"
           >
-            Any Specific campaign banner
+            Any Specific Banner
           </label>
           <input
             type="file"
             id="campaign-banner"
             onChange={handleImageChange}
-            className="mt-1 block w-full text-sm text-white border border-transparent rounded-md file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-slate-600 file:hover:bg-slate-700 file:text-white"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           />
         </div>
         {bannerImage && (
@@ -202,12 +221,14 @@ const PageThree: React.FC = () => {
             />
           </div>
         )}
-        <button
-          type="submit"
-          className="mt-4 px-4 py-2 bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:ring-indigo-500 focus:ring-offset-2 text-white transition ease-in duration-200 text-center text-sm font-semibold shadow-md rounded-lg w-full"
-        >
-          Submit
-        </button>
+        <div className="px-[40%]">
+          <button
+            type="submit"
+            className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-indigo-500 focus:ring-offset-2 text-white transition ease-in duration-200 text-center text-sm font-semibold shadow-md rounded-lg"
+          >
+            Save & Proceed
+          </button>
+        </div>
       </form>
     </div>
   );
