@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import AlertDialog from "../components/AlertDialog";
 import Banner from "../components/Banner";
+import { useCompanyContext } from "../ThemeContext";
+import axios from "axios";
 
 type CampaignType = "Type 1" | "Type 2" | "Type 3";
 type CampaignStyle = "Style 1" | "Style 2" | "Style 3";
 
 const PageThree: React.FC = () => {
+  const { companyName, companyUrl, selectedCards, setCampaignId } =
+    useCompanyContext();
+
   const [campaignTimeline, setCampaignTimeline] = useState("");
   const [campaignType, setCampaignType] = useState<CampaignType>("Type 1");
   const [campaignStyle, setCampaignStyle] = useState<CampaignStyle>("Style 1");
@@ -26,13 +31,60 @@ const PageThree: React.FC = () => {
     setBannerImage(file);
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Prepare data for the POST request
+    const requestData = {
+      company_name: companyName,
+      company_url: companyUrl,
+      products: Object.keys(selectedCards).map((index) => {
+        return {
+          product_name: `Product ${index + 1}`,
+          product_url: `https://example.com/product${index + 1}`,
+          product_price: "999",
+          product_image_url: `https://example.com/image${index + 1}.jpg`,
+        };
+      }),
+      campaign_timeline: campaignTimeline,
+      threshold: 0,
+    };
+
+    try {
+      // Make the POST request
+      const response = await axios.post(
+        "https://email-marketing.naad.tech/create_campaign",
+        requestData
+      );
+
+      // Handle the response, you can log it or show a success message
+      console.log("Campaign created successfully:", response.data);
+
+      setCampaignId(response.data.campaign_id); // Set the campaignId in the context
+
+      // Optionally, you can reset the form state here
+      setCampaignTimeline("");
+      setCampaignType("Type 1");
+      setCampaignStyle("Style 1");
+      setCampaignGoal("");
+      setQuantity(50);
+      setCustomOffer("no");
+      setBannerImage(null);
+    } catch (error) {
+      console.error("Error creating campaign:", error);
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-center p-6 space-y-4 bg-[#FCFCFB] min-h-screen">
       {/* <div className="absolute top-0 right-0 m-4 text-lg font-semibold flex items-center justify-center gap-2">
         <span>Page 3/3</span>
         <FaArrowRightLong className="text-2xl text-slate-700" />
       </div> */}
-      <form className="w-full max-w-3xl space-y-6 bg-white p-8 rounded-lg shadow-2xl">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-3xl space-y-6 bg-white p-8 rounded-lg shadow-2xl"
+      >
         <Banner />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
@@ -58,9 +110,9 @@ const PageThree: React.FC = () => {
               Quantity
             </label>
             <input
-              id="campaign-timeline"
-              value={campaignTimeline}
-              onChange={(e) => setCampaignTimeline(e.target.value)}
+              id="quantity"
+              value={quantity}
+              onChange={(e) => setQuantity(+e.target.value)}
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
               placeholder="Enter Quantity"
             />

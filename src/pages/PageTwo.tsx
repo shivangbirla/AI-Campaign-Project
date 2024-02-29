@@ -3,8 +3,11 @@ import aiImg from "../assets/ai-img.webp";
 import { Link } from "react-router-dom";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Banner from "../components/Banner";
+import { useCompanyContext } from "../ThemeContext";
+import axios from "axios";
 
 const PageTwo: React.FC = () => {
+  const { campaignId } = useCompanyContext(); // Get campaignId from context
   const [file, setFile] = useState<File | null>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,15 +15,38 @@ const PageTwo: React.FC = () => {
     setFile(file);
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (!file) {
       alert("Please upload an Excel file.");
       return;
     }
-    // Logic to handle file submission goes here
-    console.log("Submitting", { file });
-    setFile(null); // Reset file input after submission
+
+    try {
+      // Create FormData object
+      const formData = new FormData();
+      formData.append("campaign_id", String(campaignId)); // Append campaign_id
+      formData.append("file", file, file.name); // Append file
+
+      // Make the POST request using axios
+      const response = await axios.post(
+        "https://email-marketing.naad.tech/load_csv",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      // Handle the response
+      console.log("File uploaded successfully:", response.data);
+
+      // Reset the file input after submission
+      setFile(null);
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
   };
 
   return (

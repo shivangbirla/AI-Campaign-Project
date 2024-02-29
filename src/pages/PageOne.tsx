@@ -7,6 +7,7 @@ import Accordion from "../components/Accordian";
 import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner";
 import Banner from "../components/Banner";
+import { useCompanyContext } from "../ThemeContext";
 
 interface Product {
   product_name: string;
@@ -20,14 +21,16 @@ interface ResponseData {
 }
 
 const PageOne: React.FC = () => {
-  const [companyName, setCompanyName] = useState("");
-  const [companyUrl, setCompanyUrl] = useState("");
-  const [data, setData] = useState<ResponseData | null>(null);
-  const [selectedCards, setSelectedCards] = useState<{
-    [key: number]: boolean;
-  }>({});
-  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const {
+    companyName,
+    companyUrl,
+    setCompanyInfo,
+    selectedCards,
+    setSelectedCards,
+  } = useCompanyContext();
+  const [data, setData] = React.useState<ResponseData | null>(null);
+  const [isAccordionOpen, setIsAccordionOpen] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const cardsData = data?.products?.map((product) => ({
     imgSrc: product.product_image_url,
@@ -101,7 +104,7 @@ const PageOne: React.FC = () => {
               type="text"
               placeholder="Company Name"
               value={companyName}
-              onChange={(e) => setCompanyName(e.target.value)}
+              onChange={(e) => setCompanyInfo(e.target.value, companyUrl)}
             />
           </div>
           <div>
@@ -117,7 +120,7 @@ const PageOne: React.FC = () => {
               type="text"
               placeholder="Company URL"
               value={companyUrl}
-              onChange={(e) => setCompanyUrl(e.target.value)}
+              onChange={(e) => setCompanyInfo(companyName, e.target.value)}
             />
             <button
               type="button"
