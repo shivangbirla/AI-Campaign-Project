@@ -126,7 +126,7 @@ const PageTwo: React.FC = () => {
     <div className="flex flex-col items-center justify-center p-6 min-h-screen custom-bg">
       <form
         onSubmit={handleSubmit}
-        className="min-w-[70%] min-h-[80%] bg-white px-[6%] py-[4%] rounded-lg shadow-2xl"
+        className="min-w-[60%] min-h-[60%] bg-white px-[6%] pt-[4%] pb-[2%] rounded-lg shadow-2xl"
       >
         <Banner />
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -175,20 +175,37 @@ const PageTwo: React.FC = () => {
               id="campaign-type"
               value={campaignType || ""}
               onChange={(e) => setCampaignType(e.target.value as CampaignType)}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:border-transparent"
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-3 focus:border-transparent"
+              style={{ color: "#A0AEC0" }}
             >
               <option value="" disabled hidden>
                 Select Campaign Type
               </option>
-              <option>Email Campaign</option>
-              <option>Social Media Campaign</option>
-              <option>Content Marketing Campaign</option>
-              <option>Influencer Marketing Campaign</option>
-              <option>Search Engine Marketing (SEM) Campaign</option>
-              <option>Search Engine Optimization (SEO) Campaign</option>
-              <option>Pay-Per-Click (PPC) Campaign</option>
-              <option>Affiliate Marketing Campaign</option>
-              <option>Video Marketing Campaign</option>
+              <option style={{ color: "#000000" }}>Email Campaign</option>
+              <option style={{ color: "#000000" }}>
+                Social Media Campaign
+              </option>
+              <option style={{ color: "#000000" }}>
+                Content Marketing Campaign
+              </option>
+              <option style={{ color: "#000000" }}>
+                Influencer Marketing Campaign
+              </option>
+              <option style={{ color: "#000000" }}>
+                Search Engine Marketing (SEM) Campaign
+              </option>
+              <option style={{ color: "#000000" }}>
+                Search Engine Optimization (SEO) Campaign
+              </option>
+              <option style={{ color: "#000000" }}>
+                Pay-Per-Click (PPC) Campaign
+              </option>
+              <option style={{ color: "#000000" }}>
+                Affiliate Marketing Campaign
+              </option>
+              <option style={{ color: "#000000" }}>
+                Video Marketing Campaign
+              </option>
             </select>
           </div>
 
@@ -205,19 +222,26 @@ const PageTwo: React.FC = () => {
               onChange={(e) =>
                 setCampaignStyle(e.target.value as CampaignStyle)
               }
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:border-transparent"
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-3 focus:border-transparent"
+              style={{ color: "#A0AEC0" }}
             >
               <option value="" disabled hidden>
                 Select Campaign Style
               </option>
-              <option>Newsletter</option>
-              <option>Promotional Offers</option>
-              <option>Product Announcements</option>
-              <option>Event Invitations</option>
-              <option>Welcome Series</option>
-              <option>Abandoned Cart Reminders</option>
-              <option>Customer Feedback Surveys</option>
-              <option>Educational Content</option>
+              <option style={{ color: "#000000" }}>Newsletter</option>
+              <option style={{ color: "#000000" }}>Promotional Offers</option>
+              <option style={{ color: "#000000" }}>
+                Product Announcements
+              </option>
+              <option style={{ color: "#000000" }}>Event Invitations</option>
+              <option style={{ color: "#000000" }}>Welcome Series</option>
+              <option style={{ color: "#000000" }}>
+                Abandoned Cart Reminders
+              </option>
+              <option style={{ color: "#000000" }}>
+                Customer Feedback Surveys
+              </option>
+              <option style={{ color: "#000000" }}>Educational Content</option>
             </select>
           </div>
         </div>
