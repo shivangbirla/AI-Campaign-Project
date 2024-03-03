@@ -91,13 +91,13 @@ const FileUpload: React.FC = () => {
           <div className="mt-4">
             <ul className="">
               {uploadedFiles.map((file, index) => (
-                <div className="min-w-[250px] flex flex-row justify-between bg-gray-200 items-center px-2 py-1 rounded-md border border-gray-300">
-                  <li key={index} className="w-full">
+                <div className="md:min-w-[250px] min-w-[140px] flex flex-row justify-between bg-gray-200 items-center px-2 py-1 rounded-md border border-gray-300">
+                  <li key={index} className="w-full text-[12px] md:text-[15px]">
                     {file.name}
                   </li>
                   <MdOutlineCancel
                     onClick={() => handleRemoveFile(index)}
-                    className="text-[#d90429] w-[20px] h-[20px] cursor-pointer"
+                    className="text-[#d90429] w-[14px] h-[14px] md:w-[20px] md:h-[20px] cursor-pointer"
                   />
                 </div>
               ))}

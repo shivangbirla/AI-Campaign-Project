@@ -326,7 +326,7 @@ const PageTwo: React.FC = () => {
                 <ul className="">
                   {uploadedFiles.map((file, index) => (
                     <div
-                      className="min-w-[250px] flex flex-row justify-between bg-gray-200 items-center rounded-md border border-gray-300 py-1 px-2"
+                      className="min-w-[100px] md:min-w-[250px] flex flex-row justify-between bg-gray-200 items-center rounded-md border border-gray-300 py-1 px-2"
                       key={index}
                     >
                       <li className="w-full text-[12px]">{file.name}</li>
