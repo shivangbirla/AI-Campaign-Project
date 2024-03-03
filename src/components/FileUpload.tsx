@@ -83,7 +83,7 @@ const FileUpload: React.FC = () => {
         {...getRootProps()}
       >
         <MdOutlineCloudUpload className="w-[30px] h-[20px] text-[#2268E0]" />
-        <p className="text-[16px] font-medium">
+        <p className="text-[10px] md:text-[16px] font-medium">
           Drag and drop your files, or{" "}
           <span className="text-[#2268E0]">Browse</span>
         </p>
@@ -109,7 +109,7 @@ const FileUpload: React.FC = () => {
       <div className="flex justify-center">
         <button
           type="button"
-          className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 text-[14px] font-medium rounded-[4px] text-sm py-[14px] px-[32px] text-center mt-[10%]"
+          className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 text-[12px] md:text-[14px] font-medium rounded-[4px] text-sm py-[7px] px-[16px] md:py-[14px] md:px-[32px] text-center mt-[10%] mb-1 md:mb-4"
           onClick={handleSaveAndProceed}
         >
           Save & Proceed

@@ -354,7 +354,7 @@ const PageTwo: React.FC = () => {
           {/* <Link to="/page2"> */}
           <button
             type="submit"
-            className="mt-4 px-[48px] py-[14px] bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-indigo-500 focus:ring-offset-2 text-white transition ease-in duration-200 text-center text-sm font-semibold shadow-md rounded-lg"
+            className="mt-4 py-[7px] px-[24px] md:px-[48px] md:py-[14px] bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-indigo-500 focus:ring-offset-2 text-white transition ease-in duration-200 text-center text-sm font-semibold shadow-md rounded-lg mb-4 md:mb-0"
           >
             Save & Proceed
           </button>

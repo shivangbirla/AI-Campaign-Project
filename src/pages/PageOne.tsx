@@ -85,10 +85,10 @@ const PageOne: React.FC = () => {
   };
 
   return (
-    <div className="custom-bg flex flex-col items-center py-[5%] min-h-screen">
+    <div className="custom-bg flex flex-col items-center pt-[50%] md:pt-[12%] min-h-screen">
       <form
         onSubmit={handleSubmit}
-        className="space-y-4 bg-white px-[6%] pt-[3%] pb-[2%] rounded-lg shadow-2xl min-w-[70%] min-h-[80%] mx-auto"
+        className="space-y-4 bg-white px-[6%] pt-[3%] pb-[2%] rounded-lg shadow-2xl min-w-[85%] md:min-w-[70%] min-h-[80%] mx-auto"
       >
         <Banner />
         <div>
@@ -124,7 +124,7 @@ const PageOne: React.FC = () => {
           />
           <button
             type="button"
-            className="px-[16px] py-[6px] bg-blue-600 hover:bg-blue-700 text-white transition ease-in duration-200 text-center text-sm font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-[4px]"
+            className="px-[8px] py-[3px] md:px-[16px] md:py-[6px] bg-blue-600 hover:bg-blue-700 text-white transition ease-in duration-200 text-center text-[10px] md:text-[12px] font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-[4px]"
             onClick={handleScanUrl}
           >
             Scan URL
@@ -153,7 +153,7 @@ const PageOne: React.FC = () => {
         <div className="flex justify-center">
           <Link to="/page2">
             <button
-              className="mt-8 px-[48px] py-[14px] bg-blue-600 hover:bg-blue-700 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-[4px]"
+              className="mt-8 px-[24px] py-[7px] md:px-[48px] md:py-[14px] bg-blue-600 hover:bg-blue-700 text-white transition ease-in duration-200 text-center text-[13px] md:text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-[4px] mb-3 md:mb-0"
               type="submit"
             >
               Save & Submit

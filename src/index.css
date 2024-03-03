@@ -43,5 +43,12 @@ a {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* Add any additional styles here */
+}
+
+@media (max-width: 768px) {
+  .custom-bg {
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat;
+  }
 }
