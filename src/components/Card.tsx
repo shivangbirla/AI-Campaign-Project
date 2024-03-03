@@ -16,21 +16,21 @@ const Card: React.FC<CardProps> = ({
   isSelected,
   onToggle,
 }) => (
-  <div className="relative bg-white rounded-lg shadow-md">
+  <div className="relative w-[190px] h-[250px] bg-white rounded-lg shadow-md">
     <input
       type="checkbox"
       checked={isSelected}
       onChange={onToggle}
-      className="absolute top-2 left-2 h-5 w-5"
+      className="absolute top-2 right-2 h-5 w-5 cursor-pointer"
     />
     <img
-      className="w-full h-56 object-cover rounded-t-lg"
+      className="w-full h-[60%] object-contain rounded-t-lg"
       src={imgSrc}
       alt="Product"
     />
-    <div className="p-4">
-      <h5 className="text-lg font-bold">{`${price}`}</h5>
-      <p className="text-gray-700">{description}</p>
+    <div className="p-4 mt-3">
+      <h5 className="text-[14px] font-medium">{`${price}`}</h5>
+      <p className="text-gray-700 text-[14px]">{description}</p>
     </div>
   </div>
 );

@@ -25,7 +25,7 @@ const Accordion: React.FC<AccordionProps> = ({ title, children }) => {
         </span>
       </button>
       {isOpen && (
-        <div className="accordion-content bg-gray-50 p-4 border-t border-gray-200 transition-max-height duration-700 ease-in-out">
+        <div className="accordion-content bg-gray-100 border-t border-gray-200 transition-max-height duration-700 ease-in-out flex justify-center">
           {children}
         </div>
       )}
